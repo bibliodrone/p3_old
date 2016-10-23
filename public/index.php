@@ -1,58 +1,46 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<link rel="stylesheet" type="text/css" href="p3-style.css"> -->
+	<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
+	<title>Project P3</title>
+	<meta charset='utf-8'>
+	<?php require 'logic.php'; ?>
+	
+</head>
 
-/**
- * Laravel - A PHP Framework For Web Artisans
- *
- * @package  Laravel
- * @author   Taylor Otwell <taylor@laravel.com>
- */
+<body>
+	<h1>Developer's Best Friend</h1>
+	<p>Providing Lorem Ipsum text-generation and Random User Name generation services since 2016.</p>
 
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| our application. We just need to utilize it! We'll simply require it
-| into the script here so that we don't have to worry about manual
-| loading any of our classes later on. It feels nice to relax.
-|
-*/
+	<!-- User enters number of paragraphs wanted, number of Users wanted, from 0-9, for now -->
+	<form method='POST' action = 'index.php'>
+		Lorem Ipsum:
+		<input type="text" name="numParas" maxlength="1">
+		Users:
+		<input type="text" name="numUsers" maxlength="1">
 
-require __DIR__.'/../bootstrap/autoload.php';
+		<input type="submit" value="Submit"><br>
+		<?php if(isset($error)): ?>
+			<span class ='error'><?php echo $error;?></span>
+		<?php endif ?>
+	</form>
 
-/*
-|--------------------------------------------------------------------------
-| Turn On The Lights
-|--------------------------------------------------------------------------
-|
-| We need to illuminate PHP development, so let us turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight our users.
-|
-*/
+	<!-- Provide the requested output to the user... -->
+	<h3>---Lorem Ipsum---</h3>
+		<?php for ($n = 0; $n < $numParas; $n++) {
+			echo"<p>Your Lorem Ipsum Here</p>";
+		} ?>
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+	<p>END LOREM IPSUM</p>
+	<p>... ... ... ... ...</p
 
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can handle the incoming request
-| through the kernel, and send the associated response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have prepared for them.
-|
-*/
+	<h3>---Faux Users---</h3>
+		<?php for ($n = 0; $n < $numUsers; $n++) {
+			echo"<p>Your User Data Here</p>";
+		} ?>
 
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+		<p>END FAUX USERS</p>
 
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-
-$response->send();
-
-$kernel->terminate($request, $response);
+</body>
+</html>
