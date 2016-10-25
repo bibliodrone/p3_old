@@ -11,16 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('master');
+
+Route::get('/', function () 
+{
+    return View::make('welcome');
 });
 
 /*
-Route::post('/loremipsum', 'p3Controller@lmip')->name('p3.lmip') {
+Route::get('/loremipsum', 'p3Controller@loremipsum')->name('p3.loremipsum'); {
     return view('welcome');
-});
+};
+
 */
 
-Route::get('/loremipsum', 'p3Controller@loremIpsum') ->name('p3.loremipsum');
+/*Route::get('/loremipsum', 'p3Controller@loremipsum')->name('p3.li');*/
+Route::any('/loremIpsum', function() {
+	return View::make('loremIpsum');
+});
 
-Route::get('/username', 'p3Controller@username') ->name('p3.username');
+/*Route::get'/username', 'p3Controller@username')->name('p3.username');*/
+Route::any('/usernames', function() {
+	return View::make('usernames');
+});
+ 

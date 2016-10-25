@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     return;
   }
   else {
-	$numUsers = $_POST["numUsers"];
+	$numParas = $_POST["numParas"];
   }
   
   # Input validation; number of usernames
